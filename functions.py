@@ -42,12 +42,32 @@ def write_result_file(url, message):
     fin.close()
 
 def random_headers():
-    return {'User-Agent': choice(config.DESKTOP_AGENTS),'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'}
+    HEADERS = {
+        "User-Agent": choice(config.DESKTOP_AGENTS),
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.5",
+        "Accept-Encoding": "gzip, deflate",
+        "Connection": "keep-alive",
+        "Upgrade-Insecure-Requests": "1",
+        "Sec-Fetch-Dest": "document",
+        "Sec-Fetch-Mode": "navigate",
+        "Sec-Fetch-Site": "none",
+        "Sec-Fetch-User": "?1",
+        "Cache-Control": "max-age=0",
+    }
+
+    return HEADERS
 
 def get_html(url):
     try:
         response = requests.get(url=url, headers=random_headers())
         print(f'{url}: {response}')
+        write_log_file(url, {response})
+        if response.status_code == 403:
+            page_content = get_html_by_selenium(url)
+            print('Попробовали селениумом')
+            return page_content
+
         return response.text
     except Exception as ex:
         write_log_file(url, 'Не смогли подключиться')
@@ -83,7 +103,8 @@ def process_url(url):
     if find_order_page(str(page_source)):
         write_result_file(url, 'Можно покупать')
     else:
-        print(f'{get_all_links(page_source, url)}')
+        write_result_file(url, 'Не проверено')
+        #print(f'{get_all_links(page_source, url)}')
 
 
 def start_search(urls):

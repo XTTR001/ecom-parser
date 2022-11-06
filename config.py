@@ -1,7 +1,7 @@
 LOG_PATH = '/Users/romanenko/Documents/Python Проекты/Parser Интернет магазины/logs/logs.txt'
-RESUTL_PATH = '/Users/romanenko/Documents/Python Проекты/Parser Интернет магазины/result/result.txt'
+RESUTL_PATH = '/Users/romanenko/Documents/Python Проекты/Parser Интернет магазины/result/result.csv'
 
-ORDER_MARKERS = ['basket', 'cart', 'корзина', 'checkout', 'order', 'purchase']
+ORDER_MARKERS = ['basket', 'cart', 'корзина', 'checkout', 'purchase']
 
 SELENIUM_MODE = False
 
@@ -15,3 +15,5 @@ DESKTOP_AGENTS = ['Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML
                  'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36',
                  'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36',
                  'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0']
+
+DATA_PATH = '/Users/romanenko/Documents/Python Проекты/Parser Интернет магазины/source/dataTest.txt'
