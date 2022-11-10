@@ -1,11 +1,10 @@
-import functions
-import data_process
-import config
+from config import DATA_PATH, LOG_PATH, RESUTL_PATH, ORDER_MARKERS
+from web_parser import WebParser
 
 
 def main():
-    functions.start_search(data_process.get_urls(config.DATA_PATH))
-
+    web_parser = WebParser(DATA_PATH, LOG_PATH, RESUTL_PATH, ORDER_MARKERS)
+    web_parser.start_search()
 
 if __name__ == '__main__':
     main()

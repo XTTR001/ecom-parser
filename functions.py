@@ -41,6 +41,7 @@ def write_result_file(url, message):
     fin.write(f'\n{url}; {message}')
     fin.close()
 
+
 def random_headers():
     HEADERS = {
         "User-Agent": choice(config.DESKTOP_AGENTS),
@@ -57,6 +58,7 @@ def random_headers():
     }
 
     return HEADERS
+
 
 def get_html(url):
     try:
